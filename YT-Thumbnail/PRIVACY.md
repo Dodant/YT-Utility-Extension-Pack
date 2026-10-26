@@ -1,6 +1,6 @@
 # Privacy Policy
 
-YouTube Thumbnail Peek does not collect, store, sell, or share personal data.
+YT Thumbnail Peek does not collect, store, sell, or share personal data.
 
 The extension runs only on YouTube pages. It reads the current video's ID from the YouTube page URL so it can display that video's public thumbnail image inside the page. This information is not sent to the extension developer or any third-party analytics service.
 

@@ -1,28 +1,28 @@
 # YT Comment Focus
 
-YouTube watch pages에 댓글을 하나씩 보여주는 Chrome Extension입니다.
+Chrome extension that shows YouTube comments one at a time on watch pages.
 
-## 기능
+## Features
 
-- 현재 로딩된 YouTube 댓글을 인기순 DOM 순서대로 한 개씩 표시
-- 작성자, 작성 시점, 내용, 좋아요 수 표시
-- 좌우 화살표로 다음/이전 댓글 이동
-- 확장 카드에서 좋아요 버튼 즉시 실행
-- 답글 수 버튼을 누르면 원본 댓글 위치로 이동해 답글을 펼침
-- 댓글 카드를 누르면 원본 댓글 위치로 스크롤하고 댓글을 강조 표시
-- `1:23`, `12:34`, `1:02:03` 같은 시간 정보가 있는 댓글은 영상 시간이 해당 지점에 도달하면 자동 표시
-- **전체화면에서도 오버레이가 유지되어 댓글을 계속 볼 수 있음**
-- UI 문구는 영어로 고정
+- Shows currently loaded YouTube comments one by one, in the page's DOM order (Top comments by default)
+- Displays author, post time, content, and like count
+- Left/right arrows to move to the previous/next comment
+- Like button that works directly from the card
+- Reply count button jumps to the original comment and expands its replies
+- Clicking the card scrolls to the original comment and highlights it
+- Comments with timestamps like `1:23`, `12:34`, or `1:02:03` appear automatically when the video reaches that time
+- **The overlay stays visible in fullscreen, so you can keep reading comments**
+- UI text is fixed to English
 
-## 설치
+## Install
 
-1. Chrome에서 `chrome://extensions`를 엽니다.
-2. 오른쪽 위 `개발자 모드`를 켭니다.
-3. `압축해제된 확장 프로그램을 로드합니다`를 누릅니다.
-4. 이 폴더를 선택합니다: `/Users/maestr.oh-hdc/Documents/YT-Comment`
+1. Open `chrome://extensions` in Chrome.
+2. Turn on **Developer mode** (top right).
+3. Click **Load unpacked**.
+4. Select this folder (`YT-Comment`).
 
-## 사용 팁
+## Tips
 
-- YouTube는 보이는 댓글만 DOM에 로딩합니다. 댓글 영역까지 한 번 스크롤하면 확장이 더 많은 댓글을 가져옵니다.
-- 댓글 정렬은 YouTube 화면에 현재 로딩된 순서를 따릅니다. 기본 YouTube 정렬이 인기순이면 확장도 인기순으로 보여줍니다.
-- 좋아요와 답글은 로그인된 YouTube 페이지의 원래 버튼/입력창을 대신 클릭합니다.
+- YouTube only loads visible comments into the DOM. Scroll down to the comments section once and the extension picks up more comments.
+- Comment order follows what YouTube currently has loaded. If YouTube is sorted by Top comments, the extension shows them in that order.
+- Like and reply actions click YouTube's own buttons and inputs on the signed-in page.

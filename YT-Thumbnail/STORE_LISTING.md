@@ -2,7 +2,7 @@
 
 ## Name
 
-YouTube Thumbnail Peek
+YT Thumbnail Peek
 
 ## Short description
 
@@ -10,7 +10,7 @@ Preview the current YouTube video's thumbnail from a small hover button beside t
 
 ## Detailed description
 
-YouTube Thumbnail Peek adds a small, lightweight hover target to YouTube watch pages. Move your mouse over the icon beside the video title to instantly see the video's thumbnail without leaving the page.
+YT Thumbnail Peek adds a small, lightweight hover target to YouTube watch pages. Move your mouse over the icon beside the video title to instantly see the video's thumbnail without leaving the page.
 
 The extension is intentionally simple:
 

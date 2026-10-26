@@ -1,4 +1,4 @@
-# YouTube Thumbnail Peek
+# YT Thumbnail Peek
 
 Chrome extension that shows the current YouTube video's thumbnail when you hover the small thumbnail button placed at the right side of the video title.
 
@@ -7,7 +7,7 @@ Chrome extension that shows the current YouTube video's thumbnail when you hover
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.
 3. Click **Load unpacked**.
-4. Select this folder: `/Users/maestr.oh-hdc/Documents/YT-Thumbnail`.
+4. Select this folder (`YT-Thumbnail`).
 5. Open a YouTube watch page and hover the small icon beside the title.
 
 ## Notes

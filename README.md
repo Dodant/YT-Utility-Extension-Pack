@@ -1,48 +1,48 @@
 # YT-Utils
 
-웹에서 YouTube를 볼 때 쓰는 작은 Chrome 확장 프로그램 모음입니다. 각 폴더가 독립된 확장(Manifest V3)이며, `https://www.youtube.com/*`에서만 동작합니다.
+A collection of small Chrome extensions for watching YouTube on the web. Each folder is a standalone Manifest V3 extension that runs only on `https://www.youtube.com/*`.
 
-| 확장 | 폴더 | 설명 |
-|------|------|------|
-| YT Comment Focus | [`YT-Comment/`](YT-Comment) | 댓글을 하나씩 보여주는 이동·크기 조절 가능한 오버레이 |
-| YouTube Thumbnail Peek | [`YT-Thumbnail/`](YT-Thumbnail) | 영상 제목 옆 아이콘에 마우스를 올리면 현재 영상 썸네일 미리보기 |
-| YT Next Hover | [`YT-NextHover/`](YT-NextHover) | 사이드바 썸네일에 마우스를 올려두면 영상이 끝난 뒤 그 영상을 이어서 재생 |
+| Extension | Folder | Description |
+|-----------|--------|-------------|
+| YT Comment Focus | [`YT-Comment/`](YT-Comment) | Movable, resizable overlay that shows one comment at a time |
+| YT Thumbnail Peek | [`YT-Thumbnail/`](YT-Thumbnail) | Hover the icon beside the video title to preview the current video's thumbnail |
+| YT Next Hover | [`YT-NextHover/`](YT-NextHover) | Rest the cursor on a sidebar thumbnail and that video plays when the current one ends |
 
-## 설치
+## Install
 
-1. Chrome에서 `chrome://extensions`를 엽니다.
-2. 오른쪽 위 **개발자 모드**를 켭니다.
-3. **압축해제된 확장 프로그램을 로드합니다**를 누릅니다.
-4. 원하는 확장 폴더(`YT-Comment`, `YT-Thumbnail`, `YT-NextHover`)를 선택합니다.
+1. Open `chrome://extensions` in Chrome.
+2. Turn on **Developer mode** (top right).
+3. Click **Load unpacked**.
+4. Select the extension folder you want (`YT-Comment`, `YT-Thumbnail`, or `YT-NextHover`).
 
-확장마다 따로 로드하므로 필요한 것만 설치해도 됩니다.
+Each extension is loaded separately, so install only the ones you need.
 
 ## YT Comment Focus
 
-영상 페이지 위에 댓글을 한 개씩 띄워 줍니다.
+Shows comments one at a time in an overlay on the watch page.
 
-- 작성자, 작성 시점, 내용, 좋아요 수 표시
-- 좌우 화살표로 이전/다음 댓글 이동, 길이에 따라 자동 넘김
-- 좋아요 버튼, 답글 펼치기, 원본 댓글 위치로 이동
-- `1:23`, `1:02:03` 같은 타임스탬프가 있는 댓글은 해당 시점에 자동 표시
-- 전체화면에서도 오버레이 유지
+- Shows author, post time, content, and like count
+- Left/right arrows for previous/next comment, with auto-advance timed to comment length
+- Like button, expand replies, and jump to the original comment
+- Comments with timestamps like `1:23` or `1:02:03` pop up when the video reaches that point
+- Overlay stays visible in fullscreen
 
-YouTube는 보이는 댓글만 불러오므로, 댓글 영역까지 한 번 스크롤하면 더 많은 댓글을 가져옵니다.
+YouTube only loads comments that are on screen, so scroll down to the comments section once to load more.
 
-## YouTube Thumbnail Peek
+## YT Thumbnail Peek
 
-영상 제목 오른쪽의 작은 아이콘에 마우스를 올리면 현재 영상의 썸네일을 크게 보여 줍니다. 가장 높은 해상도부터 차례로 시도합니다.
+Hover the small icon to the right of the video title to see the current video's thumbnail at full size. It tries the highest resolution first and falls back to smaller ones.
 
 ## YT Next Hover
 
-뭘 먹으면서 보다가 영상이 끝났을 때 손 안 대고 다음 영상으로 넘어가기 위한 확장입니다.
+For when you're eating while watching and want the next video to start without touching anything.
 
-- 오른쪽 사이드바 썸네일에 0.5초 이상 마우스를 올려두면 **Up next** 배지와 함께 선택됩니다.
-- 커서를 치워도 선택은 유지되고, 다른 썸네일에 올리면 바뀝니다.
-- 현재 영상이 끝나면 선택한 영상을 재생합니다. YouTube 자동재생보다 우선합니다.
-- 광고가 끝날 때는 동작하지 않습니다.
+- Keep the cursor on a sidebar thumbnail for 0.5s to select it; it gets an **Up next** badge.
+- The selection stays after you move the cursor away. Hover another thumbnail to change it.
+- When the current video ends, the selected video plays, taking priority over YouTube autoplay.
+- Does nothing when an ad ends.
 
-## 참고
+## Notes
 
-- 데이터를 수집하거나 외부로 전송하지 않습니다. 권한은 YouTube 페이지 접근뿐입니다.
-- YouTube 화면 구조가 자주 바뀌므로, 업데이트 후 동작하지 않으면 선택자(selector) 수정이 필요할 수 있습니다.
+- No data is collected or sent anywhere. The only permission is access to YouTube pages.
+- YouTube changes its page markup often, so selectors may need updating if something stops working.

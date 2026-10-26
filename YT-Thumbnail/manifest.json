@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Thumbnail Peek",
+  "name": "YT Thumbnail Peek",
   "short_name": "Thumbnail Peek",
   "version": "0.1.0",
   "description": "Hover near the right edge of a YouTube video title to preview the video's thumbnail.",
