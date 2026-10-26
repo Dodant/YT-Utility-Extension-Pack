@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "YT Next Hover",
+  "description": "Hover a sidebar thumbnail on YouTube and it plays next when the current video ends.",
+  "version": "0.1.0",
+  "permissions": [],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
