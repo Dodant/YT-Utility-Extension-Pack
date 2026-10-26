@@ -31,6 +31,11 @@
     if (item && item !== selected?.item) dwellTimer = setTimeout(() => select(item), DWELL_MS);
   });
 
+  // Leaving the selected item (or the window: relatedTarget is null) drops the pick.
+  document.addEventListener("pointerout", (e) => {
+    if (selected && !selected.item.contains(e.relatedTarget)) clear();
+  });
+
   // `ended` doesn't bubble, so listen in capture phase.
   document.addEventListener("ended", (e) => {
     const player = e.target.closest?.("#movie_player");
