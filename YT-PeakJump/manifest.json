@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "YT Peak Jump",
+  "description": "Option/Alt + 1–9 jumps to the most replayed moments of a YouTube video.",
+  "version": "0.1.0",
+  "permissions": [],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/peaks.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

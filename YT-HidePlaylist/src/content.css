@@ -1,0 +1,12 @@
+/* Playlist/mix cards link with `list=`; plain videos don't.
+   Scoped to home, search and the watch sidebar so your own library still shows playlists. */
+html[data-ythp-on] :is(ytd-browse[page-subtype="home"], ytd-search, #secondary) :is(
+  ytd-rich-item-renderer:has(a[href*="list="]),
+  yt-lockup-view-model:has(a[href*="list="]),
+  ytd-radio-renderer,
+  ytd-compact-radio-renderer,
+  ytd-playlist-renderer,
+  ytd-compact-playlist-renderer
+) {
+  display: none !important;
+}
