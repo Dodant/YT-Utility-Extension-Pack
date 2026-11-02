@@ -16,7 +16,7 @@
   path.setAttribute("d", "M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z");
   svg.append(path);
 
-  const btn = el("button", { id: "ytu-menu-btn", type: "button", ariaLabel: "YT Utility settings", ariaHasPopup: "true", ariaExpanded: "false" }, svg);
+  const btn = el("button", { id: "ytu-menu-btn", type: "button", ariaLabel: "YT Utility settings", ariaExpanded: "false" }, svg);
   const menu = el("div", { id: "ytu-menu", hidden: true, role: "group" });
   const wrap = el("div", { id: "ytu-menu-wrap" }, btn, menu);
   const head = (t) => menu.append(el("div", { className: "ytu-head", textContent: t }));
@@ -50,6 +50,8 @@
   btn.addEventListener("click", () => toggle(menu.hidden));
   document.addEventListener("pointerdown", (e) => { if (!menu.hidden && !wrap.contains(e.target)) toggle(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) { toggle(false); btn.focus(); } });
+  // Keys typed on the menu's own controls stay here, so YouTube hotkeys (digits, f, k, m) don't fire. Tab and Escape still pass.
+  wrap.addEventListener("keydown", (e) => { if (e.key !== "Tab" && e.key !== "Escape") e.stopPropagation(); });
 
   // ponytail: polls every 1s; SPA navigation or a narrow window can drop the mic button or re-render the bar. Ceiling: up to 1s without the button; swap for a MutationObserver on ytd-masthead if that shows.
   setInterval(() => {

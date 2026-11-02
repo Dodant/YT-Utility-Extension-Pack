@@ -29,12 +29,13 @@ if (typeof document !== "undefined") (() => {
       if (!cols || !box) continue;
       const kids = [...box.children].flatMap((c) =>
         c.matches("ytd-rich-grid-row") ? [...(c.querySelector("#contents")?.children ?? [])] : [c]);
-      const kinds = kids.map((el) =>
-        !el.matches("ytd-rich-item-renderer") ? "block" : el.offsetParent ? "item" : "hidden");
       if (!active) {
         for (const el of kids) if (el.style.order) el.style.order = "";
         continue;
       }
+      if (!grid.offsetParent) continue; // hidden home feed kept in the DOM on watch pages: skip the layout reads
+      const kinds = kids.map((el) =>
+        !el.matches("ytd-rich-item-renderer") ? "block" : el.offsetParent ? "item" : "hidden");
       arrange(kinds, cols).forEach((i, pos) => {
         if (kids[i].style.order !== String(pos)) kids[i].style.order = pos;
       });

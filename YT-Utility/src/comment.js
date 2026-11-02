@@ -315,6 +315,7 @@
   }
 
   function requestCommentsLoad(root) {
+    if (document.hidden) return; // a background tab would scroll unseen; scans resume when it's shown
     const videoId = getVideoId() || location.href;
     if (STATE.commentLoadAttemptedFor === videoId && Date.now() - STATE.commentLoadAttemptedAt < 5000) return;
 

@@ -3,7 +3,7 @@
   const cache = new Map(); // video id -> Promise<peaks in ms>
   const peaksFor = (id) => {
     if (!cache.has(id)) {
-      cache.set(id, fetch(`/watch?v=${id}`).then((r) => r.text()).then(findPeaks).catch(() => (cache.delete(id), [])));
+      cache.set(id, fetch(`/watch?v=${id}`).then((r) => (r.ok ? r.text() : Promise.reject())).then(findPeaks).catch(() => (cache.delete(id), [])));
     }
     return cache.get(id);
   };
@@ -22,7 +22,9 @@
     e.stopImmediatePropagation();
     peaksFor(id).then((peaks) => {
       const ms = peaks[n - 1];
-      if (ms !== undefined) video.currentTime = ms / 1000;
+      // The <video> element is reused across in-app navigation and ads: only seek if we're still on this video.
+      const still = new URLSearchParams(location.search).get("v") === id && !document.querySelector("#movie_player.ad-showing");
+      if (ms !== undefined && still) video.currentTime = ms / 1000;
     });
   }, true);
 })();

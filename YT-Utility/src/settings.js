@@ -29,8 +29,9 @@ var YTU = (() => {
     on: (key) => !!state[key],
     get: (key) => state[key],
     set: (key, value) => {
-      try { chrome.storage.sync.set({ [key]: value }); }
-      catch { listeners.forEach((fn) => fn(key, state[key])); } // stale tab (extension reloaded): revert the control
+      const revert = () => listeners.forEach((fn) => fn(key, state[key])); // put the control back to the stored value
+      try { chrome.storage.sync.set({ [key]: value }).catch(revert); } // async: write quota exceeded
+      catch { revert(); } // sync: stale tab (extension reloaded)
     },
     onChange: (fn) => listeners.push(fn),
   };
