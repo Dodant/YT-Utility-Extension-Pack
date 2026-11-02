@@ -19,6 +19,17 @@ Click the button to the right of YouTube's search box to open the menu. Everythi
 - **Hide Shorts**: removes the Shorts shelf and cards (a channel's Shorts tab is untouched).
 - **Videos per row**: Default / 3 / 4 / 5 on the home feed.
 
+## This & Into This
+
+| Extension | This | Into This |
+|-----------|------|-----------|
+| YT Comment Focus | ![](docs/screenshots/comment-before.png) | ![](docs/screenshots/comment-after.png) |
+| YT Thumbnail Peek | ![](docs/screenshots/thumbnail-before.png) | ![](docs/screenshots/thumbnail-after.png) |
+| YT Next Hover | ![](docs/screenshots/nexthover-before.png) | ![](docs/screenshots/nexthover-after.png) |
+| YT Hide Playlist | ![](docs/screenshots/hideplaylist-before.png) | ![](docs/screenshots/hideplaylist-after.png) |
+| YT Column Control | ![](docs/screenshots/columncontrol-before.png) | ![](docs/screenshots/columncontrol-after.png) |
+| YT Peak Jump | ![](docs/screenshots/peakjump-before.png) | ![](docs/screenshots/peakjump-after.png) |
+
 ## Install
 
 1. Open `chrome://extensions` in Chrome.
