@@ -1,17 +1,23 @@
+/* Own color tokens: YouTube's --yt-spec-* variables aren't defined around the masthead, which left the menu transparent.
+   YouTube marks dark theme with <html dark>. */
+#ytu-menu-wrap { --ytu-bg: #fff; --ytu-fg: #0f0f0f; --ytu-fg2: #606060; --ytu-soft: rgba(0, 0, 0, .05); --ytu-hover: rgba(0, 0, 0, .1); --ytu-line: rgba(0, 0, 0, .1); --ytu-accent: #065fd4; }
+html[dark] #ytu-menu-wrap { --ytu-bg: #282828; --ytu-fg: #f1f1f1; --ytu-fg2: #aaa; --ytu-soft: rgba(255, 255, 255, .1); --ytu-hover: rgba(255, 255, 255, .2); --ytu-line: rgba(255, 255, 255, .2); --ytu-accent: #3ea6ff; }
+
 #ytu-menu-wrap { position: relative; display: inline-flex; align-items: center; margin-left: 8px; flex: none; }
 #ytu-menu-btn { width: 40px; height: 40px; border: 0; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; cursor: pointer;
-  background: var(--yt-spec-badge-chip-background); color: var(--yt-spec-text-primary); }
-#ytu-menu-btn:hover { background: var(--yt-spec-10-percent-layer); }
+  background: var(--ytu-soft); color: var(--ytu-fg); }
+#ytu-menu-btn:hover { background: var(--ytu-hover); }
 #ytu-menu { position: absolute; top: 100%; right: 0; margin-top: 8px; width: 230px; box-sizing: border-box; padding: 8px 0; z-index: 2200;
-  border-radius: 12px; background: var(--yt-spec-menu-background, var(--yt-spec-raised-background)); color: var(--yt-spec-text-primary);
+  border-radius: 12px; background: var(--ytu-bg); color: var(--ytu-fg);
   box-shadow: 0 4px 32px rgba(0, 0, 0, .1); font: 400 14px/20px Roboto, Arial, sans-serif; }
 #ytu-menu[hidden] { display: none; }
-#ytu-menu hr { border: 0; border-top: 1px solid var(--yt-spec-10-percent-layer); margin: 8px 0; }
-.ytu-head { padding: 8px 16px 4px; font-size: 13px; color: var(--yt-spec-text-secondary); }
+#ytu-menu hr { border: 0; border-top: 1px solid var(--ytu-line); margin: 8px 0; }
+.ytu-head { padding: 8px 16px 4px; font-size: 13px; color: var(--ytu-fg2); }
 .ytu-row { display: flex; align-items: center; justify-content: space-between; height: 36px; padding: 0 16px; cursor: pointer; }
-.ytu-row:hover { background: var(--yt-spec-10-percent-layer); }
-.ytu-row input { accent-color: var(--yt-spec-call-to-action, #065fd4); width: 16px; height: 16px; margin: 0; cursor: pointer; }
+.ytu-row:hover { background: var(--ytu-soft); }
+.ytu-row input { accent-color: var(--ytu-accent); width: 16px; height: 16px; margin: 0; cursor: pointer; }
 .ytu-chips { display: flex; gap: 8px; padding: 4px 16px 8px; }
 .ytu-chips button { flex: 1; height: 32px; border: 0; border-radius: 8px; cursor: pointer; font: inherit;
-  background: var(--yt-spec-badge-chip-background); color: var(--yt-spec-text-primary); }
-.ytu-chips button[aria-pressed="true"] { background: var(--yt-spec-text-primary); color: var(--yt-spec-base-background); }
+  background: var(--ytu-soft); color: var(--ytu-fg); }
+.ytu-chips button:hover { background: var(--ytu-hover); }
+.ytu-chips button[aria-pressed="true"] { background: var(--ytu-fg); color: var(--ytu-bg); }
