@@ -55,6 +55,11 @@
   setInterval(() => {
     const mic = document.querySelector("ytd-masthead #voice-search-button");
     const anchor = mic && mic.offsetParent ? mic : document.querySelector("ytd-masthead #center ytd-searchbox, ytd-masthead #center yt-searchbox");
-    if (anchor && (!wrap.isConnected || wrap.previousElementSibling !== anchor)) anchor.after(wrap);
+    if (anchor && anchor.offsetParent) {
+      if (!wrap.isConnected || wrap.previousElementSibling !== anchor) anchor.after(wrap);
+    } else { // narrow window: #center is hidden, fall back to #end
+      const end = document.querySelector("ytd-masthead #end");
+      if (end && wrap.parentElement !== end) end.prepend(wrap);
+    }
   }, 1000);
 })();

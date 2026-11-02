@@ -28,7 +28,10 @@ var YTU = (() => {
     DEFAULTS,
     on: (key) => !!state[key],
     get: (key) => state[key],
-    set: (key, value) => chrome.storage.sync.set({ [key]: value }),
+    set: (key, value) => {
+      try { chrome.storage.sync.set({ [key]: value }); }
+      catch { listeners.forEach((fn) => fn(key, state[key])); } // stale tab (extension reloaded): revert the control
+    },
     onChange: (fn) => listeners.push(fn),
   };
 })();
