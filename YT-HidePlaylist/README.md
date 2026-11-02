@@ -4,7 +4,7 @@ Chrome extension that hides playlist and mix cards from YouTube recommendations.
 
 ## How it works
 
-- Click the extension icon and toggle **Hide playlists**. On by default.
+- Toggle **Hide playlists** from the checkbox in YouTube's top bar. On by default.
 - Hides playlist/mix cards on the home feed, search results, and the watch-page sidebar.
 - Your library, channel playlist tabs, and the playlist panel of a playlist you're watching are left alone.
 - The setting syncs across Chrome profiles signed in to the same account, and applies to open tabs immediately.

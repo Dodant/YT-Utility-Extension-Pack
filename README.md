@@ -49,14 +49,14 @@ For when you're eating while watching and want the next video to start without t
 
 For when listening to music fills your recommendations with playlists.
 
-- Click the extension icon and toggle **Hide playlists** (on by default).
+- Toggle **Hide playlists** in YouTube's top bar (on by default).
 - Hides playlist and mix cards on the home feed, search results, and the watch-page sidebar. Your library and channel playlist tabs are untouched.
 
 ## YT Column Control
 
 For when home feed thumbnails look too big.
 
-- Click the extension icon and pick **Videos per row** (3–5), or **Default** for YouTube's layout.
+- Pick **Per row** (3–5) in YouTube's top bar, or **Default** for YouTube's layout.
 - Applies to the home feed only.
 
 ## YT Peak Jump

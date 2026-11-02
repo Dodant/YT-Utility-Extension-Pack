@@ -10,3 +10,9 @@ html[data-ythp-on] :is(ytd-browse[page-subtype="home"], ytd-search, #secondary) 
 ) {
   display: none !important;
 }
+
+/* Top-bar checkbox. */
+#ythp-ctl {
+  display: flex; align-items: center; gap: 6px; margin-right: 12px; cursor: pointer; white-space: nowrap;
+  font: 14px Roboto, Arial, sans-serif; color: var(--yt-spec-text-primary);
+}
