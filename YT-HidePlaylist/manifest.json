@@ -15,7 +15,8 @@
         "https://www.youtube.com/*"
       ],
       "js": [
-        "src/content.js"
+        "src/content.js",
+        "src/grid-fill.js"
       ],
       "css": [
         "src/content.css"

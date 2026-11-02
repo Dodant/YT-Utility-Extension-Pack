@@ -7,6 +7,7 @@ Chrome extension that sets how many videos fit in each row of the YouTube home f
 - Pick **Per row** (3–5) from the selector in YouTube's top bar. **Default** leaves YouTube's own layout.
 - Applies to the home feed only, and to open tabs immediately.
 - The setting syncs across Chrome profiles signed in to the same account.
+- On the home feed (and subscriptions), later videos move up to fill the gaps, so rows above shelves like Shorts stay full.
 
 ## Install
 
