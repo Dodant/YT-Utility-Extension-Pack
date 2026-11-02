@@ -1,0 +1,23 @@
+/* Shorts shelves, plus single Shorts cards (links start with /shorts/).
+   Scoped to home, subscriptions, search and the watch sidebar so a channel's own Shorts tab still works. */
+html[data-yths-on] :is(ytd-browse[page-subtype="home"], ytd-browse[page-subtype="subscriptions"], ytd-search, #secondary) :is(
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+  ytd-rich-shelf-renderer[is-shorts],
+  ytd-reel-shelf-renderer,
+  grid-shelf-view-model:has(a[href^="/shorts/"]),
+  ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+  ytd-video-renderer:has(a[href^="/shorts/"])
+) {
+  display: none !important;
+}
+
+/* Top-bar checkbox. */
+#yths-ctl {
+  display: flex; align-items: center; gap: 6px; margin-right: 12px; cursor: pointer; white-space: nowrap;
+  font: 14px Roboto, Arial, sans-serif; color: var(--yt-spec-text-primary);
+}
+
+/* YouTube groups feed cards into fixed rows; flatten them so cards reflow into gaps (see grid-fill.js). */
+ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer :is(ytd-rich-grid-row, ytd-rich-grid-row > #contents) {
+  display: contents;
+}

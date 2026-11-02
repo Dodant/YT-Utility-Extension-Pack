@@ -8,6 +8,7 @@ A collection of small Chrome extensions for watching YouTube on the web. Each fo
 | YT Thumbnail Peek | [`YT-Thumbnail/`](YT-Thumbnail) | Hover the icon beside the video title to preview the current video's thumbnail |
 | YT Next Hover | [`YT-NextHover/`](YT-NextHover) | Rest the cursor on a sidebar thumbnail and that video plays when the current one ends |
 | YT Hide Playlist | [`YT-HidePlaylist/`](YT-HidePlaylist) | Checkbox to hide playlist and mix cards from recommendations |
+| YT Hide Shorts | [`YT-HideShorts/`](YT-HideShorts) | Checkbox to hide the Shorts shelf and Shorts cards |
 | YT Column Control | [`YT-ColumnControl/`](YT-ColumnControl) | Choose how many videos fit in each row of the home feed |
 | YT Peak Jump | [`YT-PeakJump/`](YT-PeakJump) | Option/Alt + 1–9 jumps to the most replayed moments |
 
@@ -16,7 +17,7 @@ A collection of small Chrome extensions for watching YouTube on the web. Each fo
 1. Open `chrome://extensions` in Chrome.
 2. Turn on **Developer mode** (top right).
 3. Click **Load unpacked**.
-4. Select the extension folder you want (`YT-Comment`, `YT-Thumbnail`, `YT-NextHover`, `YT-HidePlaylist`, `YT-ColumnControl`, or `YT-PeakJump`).
+4. Select the extension folder you want (`YT-Comment`, `YT-Thumbnail`, `YT-NextHover`, `YT-HidePlaylist`, `YT-HideShorts`, `YT-ColumnControl`, or `YT-PeakJump`).
 
 Each extension is loaded separately, so install only the ones you need.
 
@@ -52,6 +53,13 @@ For when listening to music fills your recommendations with playlists.
 - Toggle **Hide playlists** in YouTube's top bar (on by default).
 - Hides playlist and mix cards on the home feed, search results, and the watch-page sidebar. Your library and channel playlist tabs are untouched.
 
+## YT Hide Shorts
+
+For when the Shorts shelf keeps showing up between videos.
+
+- Toggle **Hide Shorts** in YouTube's top bar (on by default).
+- Hides the Shorts shelf and Shorts cards on the home feed, subscriptions, search results, and the watch-page sidebar. A channel's Shorts tab is untouched.
+
 ## YT Column Control
 
 For when home feed thumbnails look too big.
@@ -68,5 +76,5 @@ Jumps to the peaks of the "Most replayed" graph above the progress bar.
 
 ## Notes
 
-- No data is collected or sent anywhere. Extensions only access YouTube pages; YT Hide Playlist and YT Column Control also use `storage` to remember their setting.
+- No data is collected or sent anywhere. Extensions only access YouTube pages; YT Hide Playlist, YT Hide Shorts, and YT Column Control also use `storage` to remember their setting.
 - YouTube changes its page markup often, so selectors may need updating if something stops working.

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "YT Hide Shorts",
+  "description": "Hide the Shorts shelf and Shorts cards from YouTube feeds with one checkbox.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/content.js",
+        "src/grid-fill.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
