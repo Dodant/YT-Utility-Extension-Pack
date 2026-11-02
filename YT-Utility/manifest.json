@@ -28,9 +28,13 @@
         "https://www.youtube.com/*"
       ],
       "js": [
+        "src/peaks.js",
+        "src/peakjump.js",
+        "src/nexthover.js",
         "src/menu.js"
       ],
       "css": [
+        "src/nexthover.css",
         "src/menu.css"
       ],
       "run_at": "document_idle"
