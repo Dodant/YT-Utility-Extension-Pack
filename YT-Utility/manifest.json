@@ -22,6 +22,18 @@
         "src/feed.css"
       ],
       "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/menu.js"
+      ],
+      "css": [
+        "src/menu.css"
+      ],
+      "run_at": "document_idle"
     }
   ]
 }
