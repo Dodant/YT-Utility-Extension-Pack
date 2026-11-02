@@ -1,0 +1,35 @@
+/* Playlist/mix cards link with `list=`; plain videos don't.
+   Scoped to home, search and the watch sidebar so your own library still shows playlists. */
+html[data-ytu-hideplaylists] :is(ytd-browse[page-subtype="home"], ytd-search, #secondary) :is(
+  ytd-rich-item-renderer:has(a[href*="list="]),
+  yt-lockup-view-model:has(a[href*="list="]),
+  ytd-radio-renderer,
+  ytd-compact-radio-renderer,
+  ytd-playlist-renderer,
+  ytd-compact-playlist-renderer
+) {
+  display: none !important;
+}
+
+/* Shorts shelves, plus single Shorts cards (links start with /shorts/).
+   Scoped to home, subscriptions, search and the watch sidebar so a channel's own Shorts tab still works. */
+html[data-ytu-hideshorts] :is(ytd-browse[page-subtype="home"], ytd-browse[page-subtype="subscriptions"], ytd-search, #secondary) :is(
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+  ytd-rich-shelf-renderer[is-shorts],
+  ytd-reel-shelf-renderer,
+  grid-shelf-view-model:has(a[href^="/shorts/"]),
+  ytd-rich-item-renderer:has(a[href^="/shorts/"]),
+  ytd-video-renderer:has(a[href^="/shorts/"])
+) {
+  display: none !important;
+}
+
+/* YouTube sizes cards from this variable (set inline by its own JS; !important wins). */
+html[data-ytu-cols] ytd-browse[page-subtype="home"] ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: var(--ytu-cols) !important;
+}
+
+/* YouTube groups feed cards into fixed rows; flatten them so cards reflow into gaps (see grid-fill.js). */
+html:is([data-ytu-hideplaylists], [data-ytu-hideshorts], [data-ytu-cols]) ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer :is(ytd-rich-grid-row, ytd-rich-grid-row > #contents) {
+  display: contents;
+}

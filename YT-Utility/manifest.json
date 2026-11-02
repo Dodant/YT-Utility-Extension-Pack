@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "YT Utility",
+  "description": "Small YouTube utilities in one extension, switched from a menu in YouTube's top bar.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/settings.js",
+        "src/grid-fill.js"
+      ],
+      "css": [
+        "src/feed.css"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
