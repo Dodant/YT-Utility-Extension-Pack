@@ -31,10 +31,14 @@
         "src/peaks.js",
         "src/peakjump.js",
         "src/nexthover.js",
+        "src/thumbnail.js",
+        "src/comment.js",
         "src/menu.js"
       ],
       "css": [
         "src/nexthover.css",
+        "src/thumbnail.css",
+        "src/comment.css",
         "src/menu.css"
       ],
       "run_at": "document_idle"

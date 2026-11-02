@@ -1,0 +1,167 @@
+.yt-thumbnail-peek-title-row {
+  align-items: center !important;
+  display: flex !important;
+  gap: 12px;
+  width: 100%;
+}
+
+.yt-thumbnail-peek-title-row yt-formatted-string {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.yt-thumbnail-peek-anchor {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: zoom-in;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font: inherit;
+  height: 32px;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 47px;
+}
+
+.yt-thumbnail-peek-card {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 48%),
+    linear-gradient(135deg, rgba(36, 36, 36, 0.96) 0%, rgba(18, 18, 18, 0.96) 56%, rgba(44, 30, 36, 0.96) 100%);
+  border: 1px solid rgba(15, 15, 15, 0.16);
+  border-radius: 7px;
+  box-sizing: border-box;
+  display: inline-flex;
+  height: 25px;
+  justify-content: center;
+  left: 3px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 3px;
+  transform: rotate(-2deg);
+  transition: border-color 160ms ease, transform 160ms ease;
+  width: 38px;
+}
+
+html[dark] .yt-thumbnail-peek-card {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.24) 48%),
+    linear-gradient(135deg, rgba(250, 250, 250, 0.94) 0%, rgba(226, 226, 226, 0.94) 58%, rgba(205, 205, 205, 0.94) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.yt-thumbnail-peek-card::before,
+.yt-thumbnail-peek-card::after {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  content: "";
+  height: 2px;
+  left: 7px;
+  position: absolute;
+  right: 7px;
+}
+
+.yt-thumbnail-peek-card::before {
+  top: 6px;
+}
+
+.yt-thumbnail-peek-card::after {
+  bottom: 6px;
+  width: 15px;
+}
+
+html[dark] .yt-thumbnail-peek-card::before,
+html[dark] .yt-thumbnail-peek-card::after {
+  background: rgba(15, 15, 15, 0.18);
+}
+
+html[dark] .yt-thumbnail-peek-play {
+  border-left-color: rgba(15, 15, 15, 0.9);
+}
+
+.yt-thumbnail-peek-play {
+  border-bottom: 4.5px solid transparent;
+  border-left: 8px solid rgba(255, 255, 255, 0.96);
+  border-top: 4.5px solid transparent;
+  height: 0;
+  margin-left: 2px;
+  position: relative;
+  width: 0;
+  z-index: 1;
+}
+
+.yt-thumbnail-peek-shine {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+  bottom: -10px;
+  position: absolute;
+  top: -10px;
+  transform: translateX(-34px) rotate(18deg);
+  transition: transform 420ms ease;
+  width: 14px;
+}
+
+html[dark] .yt-thumbnail-peek-shine {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+.yt-thumbnail-peek-anchor:hover .yt-thumbnail-peek-card,
+.yt-thumbnail-peek-anchor:focus-visible .yt-thumbnail-peek-card {
+  border-color: rgba(15, 15, 15, 0.22);
+  transform: rotate(0deg) translateY(-1px) scale(1.05);
+}
+
+html[dark] .yt-thumbnail-peek-anchor:hover .yt-thumbnail-peek-card,
+html[dark] .yt-thumbnail-peek-anchor:focus-visible .yt-thumbnail-peek-card {
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.yt-thumbnail-peek-anchor:hover .yt-thumbnail-peek-shine,
+.yt-thumbnail-peek-anchor:focus-visible .yt-thumbnail-peek-shine {
+  transform: translateX(38px) rotate(18deg);
+}
+
+.yt-thumbnail-peek-anchor:focus-visible {
+  outline: 2px solid #3ea6ff;
+  outline-offset: 3px;
+}
+
+.yt-thumbnail-peek-popover {
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.34);
+  box-sizing: border-box;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  transform: translateY(6px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 120ms ease, transform 120ms ease;
+  width: min(640px, calc(100vw - 32px));
+  z-index: 2147483647;
+}
+
+.yt-thumbnail-peek-popover[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.yt-thumbnail-peek-popover img {
+  aspect-ratio: 16 / 9;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.yt-thumbnail-peek-popover__shell {
+  position: relative;
+}

@@ -1,0 +1,544 @@
+.ytcf-root {
+  --ytcf-text: #f7f7f7;
+  --ytcf-content: #ffffff;
+  --ytcf-muted: #b8b8b8;
+  --ytcf-soft-text: #d7d7d7;
+  --ytcf-card-bg: rgba(16, 16, 16, 0.86);
+  --ytcf-border: rgba(255, 255, 255, 0.16);
+  --ytcf-divider: rgba(255, 255, 255, 0.1);
+  --ytcf-shadow: rgba(0, 0, 0, 0.42);
+  --ytcf-shadow-soft: rgba(0, 0, 0, 0.36);
+  --ytcf-control-bg: rgba(255, 255, 255, 0.1);
+  --ytcf-control-bg-soft: rgba(255, 255, 255, 0.08);
+  --ytcf-control-hover-bg: rgba(255, 255, 255, 0.18);
+  --ytcf-control-hover-border: rgba(255, 255, 255, 0.3);
+  --ytcf-nav-divider: rgba(255, 255, 255, 0.12);
+  --ytcf-chip-border: rgba(82, 214, 190, 0.55);
+  --ytcf-chip-text: #89f1dc;
+  --ytcf-timecode-bg: rgba(62, 166, 255, 0.22);
+  --ytcf-timecode-border: rgba(62, 166, 255, 0.34);
+  --ytcf-timecode-text: #9dccff;
+  --ytcf-like-border: rgba(255, 48, 48, 0.65);
+  --ytcf-like-bg: rgba(255, 48, 48, 0.24);
+  --ytcf-like-text: #ffb4b4;
+  --ytcf-official-text: #ff6b6b;
+  --ytcf-input-placeholder: #b6b6b6;
+  --ytcf-input-focus: rgba(255, 48, 48, 0.7);
+  --ytcf-empty-text: #e6e6e6;
+  --ytcf-progress-track: rgba(255, 255, 255, 0.08);
+  --ytcf-progress-start: rgba(255, 255, 255, 0.18);
+  --ytcf-progress-mid: rgba(255, 60, 60, 0.72);
+  --ytcf-progress-end: rgba(255, 255, 255, 0.96);
+  --ytcf-progress-glow: rgba(255, 65, 65, 0.72);
+  --ytcf-auto-duration: 8000ms;
+  position: fixed;
+  z-index: 2147483646;
+  right: clamp(12px, 2.3vw, 28px);
+  bottom: clamp(14px, 3vw, 34px);
+  width: min(460px, calc(100vw - 32px));
+  height: 174px;
+  max-height: calc(100vh - 32px);
+  color: var(--ytcf-text);
+  font-family: Roboto, Arial, sans-serif;
+  pointer-events: auto;
+  text-align: left;
+  transition: left 160ms ease, top 160ms ease;
+}
+
+.ytcf-root,
+.ytcf-root * {
+  box-sizing: border-box;
+}
+
+.ytcf-root[data-theme="inverted"] {
+  --ytcf-text: #101010;
+  --ytcf-content: #000000;
+  --ytcf-muted: #474747;
+  --ytcf-soft-text: #2f2f2f;
+  --ytcf-card-bg: rgba(248, 248, 248, 0.9);
+  --ytcf-border: rgba(0, 0, 0, 0.16);
+  --ytcf-divider: rgba(0, 0, 0, 0.1);
+  --ytcf-shadow: rgba(255, 255, 255, 0.28);
+  --ytcf-shadow-soft: rgba(255, 255, 255, 0.2);
+  --ytcf-control-bg: rgba(0, 0, 0, 0.08);
+  --ytcf-control-bg-soft: rgba(0, 0, 0, 0.06);
+  --ytcf-control-hover-bg: rgba(0, 0, 0, 0.14);
+  --ytcf-control-hover-border: rgba(0, 0, 0, 0.3);
+  --ytcf-nav-divider: rgba(0, 0, 0, 0.12);
+  --ytcf-chip-border: rgba(16, 103, 91, 0.55);
+  --ytcf-chip-text: #0f5f54;
+  --ytcf-timecode-bg: rgba(6, 95, 212, 0.13);
+  --ytcf-timecode-border: rgba(6, 95, 212, 0.24);
+  --ytcf-timecode-text: #065fd4;
+  --ytcf-like-border: rgba(181, 18, 18, 0.65);
+  --ytcf-like-bg: rgba(255, 48, 48, 0.16);
+  --ytcf-like-text: #8f1111;
+  --ytcf-official-text: #cc0000;
+  --ytcf-input-placeholder: #626262;
+  --ytcf-input-focus: rgba(181, 18, 18, 0.7);
+  --ytcf-empty-text: #202020;
+  --ytcf-progress-track: rgba(0, 0, 0, 0.08);
+  --ytcf-progress-start: rgba(0, 0, 0, 0.12);
+  --ytcf-progress-mid: rgba(204, 0, 0, 0.58);
+  --ytcf-progress-end: rgba(0, 0, 0, 0.82);
+  --ytcf-progress-glow: rgba(204, 0, 0, 0.44);
+}
+
+.ytcf-root[data-dragging="true"] {
+  transition: none;
+}
+
+.ytcf-root[data-resizing="true"] {
+  transition: none;
+}
+
+.ytcf-shell {
+  display: block;
+  height: 100%;
+}
+
+.ytcf-card {
+  position: relative;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  border: 1px solid var(--ytcf-border);
+  border-radius: 14px;
+  background: var(--ytcf-card-bg);
+  box-shadow: 0 12px 34px var(--ytcf-shadow);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.ytcf-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  gap: 16px;
+  padding: 10px 12px 7px;
+  border-bottom: 1px solid var(--ytcf-divider);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.ytcf-root[data-dragging="true"] .ytcf-topbar {
+  cursor: grabbing;
+}
+
+.ytcf-card:focus-visible {
+  outline: 2px solid var(--ytcf-input-focus);
+  outline-offset: 2px;
+}
+
+.ytcf-root[data-hidden-edge] .ytcf-card {
+  box-shadow: 0 8px 22px var(--ytcf-shadow-soft);
+}
+
+.ytcf-progress {
+  position: relative;
+  flex: 0 0 auto;
+  height: 3px;
+  overflow: hidden;
+  background: var(--ytcf-progress-track);
+}
+
+.ytcf-progress-fill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    var(--ytcf-progress-start),
+    var(--ytcf-progress-mid) 62%,
+    var(--ytcf-progress-end)
+  );
+  box-shadow: 0 0 12px var(--ytcf-progress-glow);
+  opacity: 0;
+}
+
+.ytcf-progress-fill::after {
+  position: absolute;
+  top: -7px;
+  right: -14px;
+  bottom: -7px;
+  width: 28px;
+  background: radial-gradient(circle, var(--ytcf-progress-end) 0%, transparent 68%);
+  content: "";
+  filter: blur(2px);
+}
+
+.ytcf-root[data-auto-advance="true"] .ytcf-progress-fill {
+  animation: ytcf-auto-progress var(--ytcf-auto-duration) linear forwards;
+  opacity: 1;
+}
+
+.ytcf-root[data-auto-advance="false"] .ytcf-progress-fill {
+  opacity: 0;
+}
+
+@keyframes ytcf-auto-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.ytcf-author-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 8px;
+}
+
+.ytcf-author {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid var(--ytcf-border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: var(--ytcf-control-bg-soft);
+  color: var(--ytcf-content);
+  cursor: pointer;
+  font: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.ytcf-author:hover {
+  border-color: var(--ytcf-control-hover-border);
+  background: var(--ytcf-control-hover-bg);
+}
+
+.ytcf-author:active {
+  transform: translateY(1px);
+}
+
+.ytcf-author-verified {
+  color: var(--ytcf-official-text);
+}
+
+.ytcf-time {
+  flex: 0 0 auto;
+  color: var(--ytcf-muted);
+  font-size: 12px;
+}
+
+.ytcf-topbar-right {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.ytcf-body {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 10px 12px 8px;
+  background: transparent;
+  color: inherit;
+  cursor: text;
+  font: inherit;
+  overflow-y: auto;
+  text-align: left;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.ytcf-root[data-empty="true"] .ytcf-progress,
+.ytcf-root[data-empty="true"] .ytcf-actions {
+  display: none;
+}
+
+.ytcf-root[data-empty="true"] .ytcf-body {
+  display: grid;
+  place-items: center;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ytcf-content {
+  display: block;
+  color: var(--ytcf-content);
+  font-size: 15px;
+  line-height: 1.42;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ytcf-root[data-empty="true"] .ytcf-content {
+  display: block;
+  max-width: 46ch;
+  color: var(--ytcf-empty-text);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.ytcf-timecode {
+  display: inline-block;
+  margin: 0 2px;
+  border: 1px solid var(--ytcf-timecode-border);
+  border-radius: 6px;
+  padding: 0 5px;
+  background: var(--ytcf-timecode-bg);
+  color: var(--ytcf-timecode-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.ytcf-timecode:hover {
+  border-color: var(--ytcf-control-hover-border);
+  background: var(--ytcf-control-hover-bg);
+}
+
+.ytcf-timecode:focus-visible {
+  outline: 2px solid var(--ytcf-timecode-text);
+  outline-offset: 2px;
+}
+
+.ytcf-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  gap: 8px;
+  padding: 7px 10px 10px 12px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.ytcf-action-group {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 6px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ytcf-action-group:first-child {
+  flex: 1 1 auto;
+  min-width: max-content;
+}
+
+.ytcf-nav {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ytcf-soft-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  touch-action: manipulation;
+}
+
+.ytcf-nav-group {
+  display: grid;
+  grid-template-columns: repeat(2, 32px);
+  flex: 0 0 auto;
+  height: 28px;
+  overflow: hidden;
+  border: 1px solid var(--ytcf-border);
+  border-radius: 999px;
+  background: var(--ytcf-control-bg-soft);
+}
+
+.ytcf-root[data-return-visible="true"] .ytcf-nav-group {
+  grid-template-columns: repeat(3, 32px);
+}
+
+.ytcf-return-video {
+  display: none;
+}
+
+.ytcf-root[data-return-visible="true"] .ytcf-return-video {
+  display: grid;
+}
+
+.ytcf-next {
+  border-left: 1px solid var(--ytcf-nav-divider);
+}
+
+.ytcf-root[data-return-visible="true"] .ytcf-prev {
+  border-left: 1px solid var(--ytcf-nav-divider);
+}
+
+.ytcf-nav:hover {
+  background: var(--ytcf-control-hover-bg);
+  color: var(--ytcf-content);
+}
+
+.ytcf-nav:active {
+  background: var(--ytcf-control-bg);
+}
+
+/* Nav buttons sit inside an overflow:hidden pill, so draw the focus ring
+   inset (negative offset) to keep it from being clipped at the rounded edge. */
+.ytcf-nav:focus-visible {
+  outline: 2px solid var(--ytcf-input-focus);
+  outline-offset: -2px;
+}
+
+.ytcf-author:focus-visible,
+.ytcf-like:focus-visible,
+.ytcf-replies:focus-visible {
+  outline: 2px solid var(--ytcf-input-focus);
+  outline-offset: 2px;
+}
+
+.ytcf-nav svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.ytcf-like,
+.ytcf-replies {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 28px;
+  white-space: nowrap;
+  border: 1px solid var(--ytcf-border);
+  border-radius: 999px;
+  padding: 4px 7px;
+  background: var(--ytcf-control-bg-soft);
+  color: var(--ytcf-soft-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.25;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  touch-action: manipulation;
+}
+
+.ytcf-like:hover,
+.ytcf-replies:hover {
+  border-color: var(--ytcf-control-hover-border);
+  background: var(--ytcf-control-hover-bg);
+}
+
+.ytcf-like:active,
+.ytcf-replies:active {
+  transform: translateY(1px);
+}
+
+.ytcf-like[aria-pressed="true"] {
+  border-color: var(--ytcf-like-border);
+  background: var(--ytcf-like-bg);
+  color: var(--ytcf-like-text);
+}
+
+.ytcf-like[data-pending="true"] {
+  opacity: 0.78;
+}
+
+.ytcf-count {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  color: var(--ytcf-soft-text);
+  font-size: 13px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.ytcf-likes::before,
+.ytcf-replies::before,
+.ytcf-count::before {
+  content: attr(data-label);
+}
+
+.ytcf-likes:not([data-label])::before,
+.ytcf-replies:not([data-label])::before,
+.ytcf-count:not([data-label])::before {
+  content: none;
+}
+
+.ytcf-metric-number {
+  font-weight: 700;
+}
+
+.ytcf-metric-text {
+  white-space: pre;
+}
+
+.ytcf-replies[data-label=""] {
+  display: none;
+}
+
+.ytcf-count[data-label=""] {
+  display: none;
+}
+
+.ytcf-resize-handle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.ytcf-resize-handle::before {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ytcf-muted);
+  border-bottom: 2px solid var(--ytcf-muted);
+  content: "";
+  opacity: 0.82;
+}
+
+.ytcf-hidden {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  .ytcf-root {
+    right: 10px;
+    bottom: 10px;
+    width: min(390px, calc(100vw - 20px));
+  }
+}
