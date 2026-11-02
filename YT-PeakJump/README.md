@@ -21,5 +21,5 @@ YouTube uses bare digits to seek to 0–90% and Ctrl/Cmd + digit switches browse
 ## Notes
 
 - Runs only on `https://www.youtube.com/*` and requests no extra permissions.
-- Reads the graph from the player's `.ytp-heat-map-path` SVG. If YouTube changes its markup, update `src/content.js`.
+- Reads the "Most replayed" heat markers from the watch page data (fetched once per video). If YouTube renames those keys, update the patterns in `src/peaks.js`.
 - On Linux, Chrome also uses Alt + 1–8 to switch tabs, so the shortcut may conflict there.
