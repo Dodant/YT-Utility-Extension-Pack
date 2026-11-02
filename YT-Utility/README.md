@@ -25,6 +25,8 @@ Click the button to the right of YouTube's search box to open the menu. Everythi
 2. Turn on **Developer mode** (top right).
 3. Click **Load unpacked** and select the `YT-Utility` folder.
 
+If you used the old standalone YT-* extensions, remove them first, or both copies run side by side. Settings start from the defaults.
+
 ## Notes
 
 - Only the `storage` permission, and it runs only on `https://www.youtube.com/*`. No data is sent anywhere; Peak Jump fetches the same-origin watch page to read "Most replayed" data.
