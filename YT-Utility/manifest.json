@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "YT Utility",
+  "description": "Small YouTube utilities in one extension, switched from a menu in YouTube's top bar.",
+  "version": "0.1.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/settings.js",
+        "src/grid-fill.js"
+      ],
+      "css": [
+        "src/feed.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/peaks.js",
+        "src/peakjump.js",
+        "src/nexthover.js",
+        "src/thumbnail.js",
+        "src/comment.js",
+        "src/menu.js"
+      ],
+      "css": [
+        "src/nexthover.css",
+        "src/thumbnail.css",
+        "src/comment.css",
+        "src/menu.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
