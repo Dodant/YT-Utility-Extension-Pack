@@ -17,6 +17,7 @@ Click the button to the right of YouTube's search box to open the menu. Everythi
 
 - **Hide playlists**: removes playlist and mix cards from the home feed, search, and watch sidebar.
 - **Hide Shorts**: removes the Shorts shelf and cards (a channel's Shorts tab is untouched).
+- **Search grid**: search results laid out in a grid like the home feed instead of a list.
 - **Videos per row**: Default / 3 / 4 / 5 on the home feed.
 
 ## This & Into This

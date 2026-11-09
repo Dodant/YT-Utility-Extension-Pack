@@ -42,9 +42,20 @@ if (typeof document !== "undefined") (() => {
     }
   };
 
+  // Search grid copies the home feed's column count: the chosen "Videos per row", else YouTube's own count on the home grid
+  // (still in the DOM after visiting home). Neither known (search opened directly) -> feed.css falls back to auto-fill.
+  const syncSearchCols = () => {
+    const root = document.documentElement;
+    const home = document.querySelector('ytd-browse[page-subtype="home"] ytd-rich-grid-renderer');
+    const n = YTU.get("cols") || (home && parseInt(getComputedStyle(home).getPropertyValue("--ytd-rich-grid-items-per-row"))) || 0;
+    if (root.style.getPropertyValue("--ytu-search-cols") !== String(n)) root.style.setProperty("--ytu-search-cols", n);
+    if (root.hasAttribute("data-ytu-searchcols") !== n > 0) root.toggleAttribute("data-ytu-searchcols", n > 0);
+    if (root.hasAttribute("data-ytu-searchdense") !== n >= 4) root.toggleAttribute("data-ytu-searchdense", n >= 4); // smaller titles
+  };
+
   // Throttled, not debounced: YouTube mutates constantly and a debounce would never fire.
   let timer = 0;
-  const schedule = () => { timer ||= setTimeout(() => { timer = 0; fill(); }, 200); };
+  const schedule = () => { timer ||= setTimeout(() => { timer = 0; fill(); syncSearchCols(); }, 200); };
   const mo = new MutationObserver(schedule);
   mo.observe(document, { childList: true, subtree: true });
   mo.observe(document.documentElement, { attributes: true }); // settings toggles flip <html> attributes

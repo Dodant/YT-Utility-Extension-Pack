@@ -1,7 +1,7 @@
 // Shared settings for all YT Utility scripts (global `YTU`). Runs at document_start: only documentElement exists.
 // Each setting mirrors onto <html> as data-ytu-<key> (booleans, while true) so CSS can switch on it.
 var YTU = (() => {
-  const DEFAULTS = { comment: true, thumbnail: true, nexthover: true, peakjump: true, hidePlaylists: true, hideShorts: true, cols: 0 };
+  const DEFAULTS = { comment: true, thumbnail: true, nexthover: true, peakjump: true, hidePlaylists: true, hideShorts: true, searchGrid: true, cols: 0 };
   const state = { ...DEFAULTS };
   const listeners = [];
   const root = document.documentElement;

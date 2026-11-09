@@ -38,3 +38,44 @@ html:is([data-ytu-hideplaylists], [data-ytu-hideshorts], [data-ytu-cols]) ytd-br
 html:is([data-ytu-hideplaylists], [data-ytu-hideshorts], [data-ytu-cols]) ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer :is(#contents > *, ytd-rich-grid-row > #contents > *) {
   order: 999999;
 }
+
+/* Search results as a grid like the home feed. Video cards stack thumbnail over text;
+   anything else in the list (shelves, channels, ads) spans the full row. */
+html[data-ytu-searchgrid] ytd-search :is(ytd-two-column-search-results-renderer, ytd-two-column-search-results-renderer #primary) {
+  max-width: none !important;
+}
+html[data-ytu-searchgrid] ytd-search ytd-item-section-renderer > #contents {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0 16px;
+}
+html[data-ytu-searchgrid][data-ytu-searchcols] ytd-search ytd-item-section-renderer > #contents {
+  grid-template-columns: repeat(var(--ytu-search-cols), minmax(0, 1fr));
+}
+html[data-ytu-searchgrid] ytd-search ytd-item-section-renderer > #contents > :not(ytd-video-renderer) {
+  grid-column: 1 / -1;
+}
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer {
+  max-width: none;
+  margin-top: 0 !important;
+  margin-bottom: 24px;
+}
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer #dismissible {
+  flex-direction: column;
+}
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer ytd-thumbnail {
+  max-width: none !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  margin: 0 0 12px 0 !important;
+}
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer :is(.metadata-snippet-container, #expandable-metadata) {
+  display: none !important;
+}
+
+/* 4+ columns: narrower cards, so shrink the title toward the home feed's size. */
+html[data-ytu-searchgrid][data-ytu-searchdense] ytd-search ytd-video-renderer #video-title {
+  font-size: 1.6rem !important;
+  line-height: 2.2rem !important;
+  max-height: 4.4rem !important;
+}

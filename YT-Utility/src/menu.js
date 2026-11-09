@@ -3,7 +3,7 @@
   const el = (tag, props, ...kids) => { const n = Object.assign(document.createElement(tag), props); n.append(...kids); return n; };
   const GROUPS = [
     ["Watching", [["comment", "Comment Focus"], ["thumbnail", "Thumbnail Peek"], ["nexthover", "Next Hover"], ["peakjump", "Peak Jump"]]],
-    ["Feed", [["hidePlaylists", "Hide playlists"], ["hideShorts", "Hide Shorts"]]],
+    ["Feed", [["hidePlaylists", "Hide playlists"], ["hideShorts", "Hide Shorts"], ["searchGrid", "Search grid"]]],
   ];
   const COLS = [["Default", 0], ["3", 3], ["4", 4], ["5", 5]];
   const boxes = {}, chips = [];

@@ -30,7 +30,7 @@ function load({ stored = {}, setThrows = false, setRejects = false } = {}) {
 (async () => {
   // Defaults are on <html> before storage answers; attribute names are what feed.css / grid-fill.js expect.
   let t = load();
-  for (const a of ["data-ytu-comment", "data-ytu-thumbnail", "data-ytu-nexthover", "data-ytu-peakjump", "data-ytu-hideplaylists", "data-ytu-hideshorts"]) assert(t.attrs.has(a), a);
+  for (const a of ["data-ytu-comment", "data-ytu-thumbnail", "data-ytu-nexthover", "data-ytu-peakjump", "data-ytu-hideplaylists", "data-ytu-hideshorts", "data-ytu-searchgrid"]) assert(t.attrs.has(a), a);
   assert(!t.attrs.has("data-ytu-cols"));
 
   // Stored values apply on load and notify only for keys that changed.
