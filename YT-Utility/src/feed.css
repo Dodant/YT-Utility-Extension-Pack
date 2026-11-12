@@ -39,29 +39,43 @@ html:is([data-ytu-hideplaylists], [data-ytu-hideshorts], [data-ytu-cols]) ytd-br
   order: 999999;
 }
 
-/* Search results as a grid like the home feed. Video cards stack thumbnail over text;
-   anything else in the list (shelves, channels, ads) spans the full row. */
+/* Search results as a grid like the home feed. Infinite scroll appends a new ytd-item-section-renderer per page,
+   so the sections are flattened into one grid on the section list (else every page ends in a partial row).
+   Video cards stack thumbnail over text; anything else (shelves, channels, headers, spinner) spans the full row. */
 html[data-ytu-searchgrid] ytd-search :is(ytd-two-column-search-results-renderer, ytd-two-column-search-results-renderer #primary) {
   max-width: none !important;
 }
-html[data-ytu-searchgrid] ytd-search ytd-item-section-renderer > #contents {
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-flow: row dense; /* videos after a full-width item backfill the row above it */
   gap: 0 16px;
 }
-html[data-ytu-searchgrid][data-ytu-searchcols] ytd-search ytd-item-section-renderer > #contents {
+html[data-ytu-searchgrid][data-ytu-searchcols] ytd-search ytd-section-list-renderer > #contents {
   grid-template-columns: repeat(var(--ytu-search-cols), minmax(0, 1fr));
 }
-html[data-ytu-searchgrid] ytd-search ytd-item-section-renderer > #contents > :not(ytd-video-renderer) {
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents > ytd-item-section-renderer,
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents > ytd-item-section-renderer > #contents {
+  display: contents;
+}
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents > :not(ytd-item-section-renderer),
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents > ytd-item-section-renderer > :not(#contents),
+html[data-ytu-searchgrid] ytd-search ytd-section-list-renderer > #contents > ytd-item-section-renderer > #contents > :not(ytd-video-renderer) {
   grid-column: 1 / -1;
 }
 html[data-ytu-searchgrid] ytd-search ytd-video-renderer {
   max-width: none;
+  min-width: 0;
   margin-top: 0 !important;
   margin-bottom: 24px;
 }
 html[data-ytu-searchgrid] ytd-search ytd-video-renderer #dismissible {
   flex-direction: column;
+}
+/* Long chapter/snippet text otherwise sizes the text column past the card and titles run into the next card. */
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer :is(.text-wrapper, #meta) {
+  min-width: 0 !important;
+  max-width: 100% !important;
 }
 html[data-ytu-searchgrid] ytd-search ytd-video-renderer ytd-thumbnail {
   max-width: none !important;
@@ -69,7 +83,7 @@ html[data-ytu-searchgrid] ytd-search ytd-video-renderer ytd-thumbnail {
   width: 100% !important;
   margin: 0 0 12px 0 !important;
 }
-html[data-ytu-searchgrid] ytd-search ytd-video-renderer :is(.metadata-snippet-container, #expandable-metadata) {
+html[data-ytu-searchgrid] ytd-search ytd-video-renderer :is(#description-text, .metadata-snippet-container, #expandable-metadata, #badges) {
   display: none !important;
 }
 
