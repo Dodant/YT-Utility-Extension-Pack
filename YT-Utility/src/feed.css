@@ -93,3 +93,10 @@ html[data-ytu-searchgrid][data-ytu-searchdense] ytd-search ytd-video-renderer #v
   line-height: 2.2rem !important;
   max-height: 4.4rem !important;
 }
+
+/* YouTube bug: the masthead's frosted background stays chip-bar tall (112px) even when home renders no chip bar,
+   covering the top of the first row. Shrink it to the masthead when the home grid's header is empty.
+   (:empty, not :not(:has(*)): :has() can't nest, and that version silently drops the rule.) */
+ytd-app:has(ytd-browse[page-subtype="home"]:not([hidden]) ytd-rich-grid-renderer > #header:empty) #frosted-glass.with-chipbar {
+  height: 56px !important;
+}
